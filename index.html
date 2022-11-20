@@ -1,11 +1,138 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
+
+<!--
+    Author: Mia Alvarez 
+    Credit: Eric Pougue
+    Project: MatchMaker Web
+
+    All rights reserved
+-->
+
 <head>
-<title>Hello World Azure Template</title>
+    <meta charset="UTF-8">
+    <title>MatchMaker 2022</title>
 </head>
+
 <body>
-<h1>Azure Static Website Template</h1>
-<p>This page is a sample page for a “Hello World” Azure Static Website Template. The page contains an HTML validation warning. 
-Can you find and fix that warning?</p>
+    <h1>~ 🤍 Top Tier Matchmaker 🤍 ~</h1>
+    <p>🤍 Read 5 very important questions 
+        to determine your compatability with me 
+        <br /><br /><br />
+        🤍 Rank them regarding how much you agree or disagree
+        <br /><br /><br />
+        🤍 Good Luck, our future depends on you!</p>
+
+    <label>🎮 Video games together?</label>
+
+    <select id="Q1">
+    <option value="5">STRONGLY AGREE</option>
+    <option value="4">AGREE</option>
+    <option value="3">DOES NOT AGREE NOR DISAGREE</option>
+    <option value="2">DISAGREE</option>
+    <option value="1">STRONGLY DISAGREE</option>
+    </select>
+    <br /><br /><br />
+
+    <label>🌞Summer is the best season?</label>
+
+    <select id="Q2">
+    <option value="5">STRONGLY AGREE</option>
+    <option value="4">AGREE</option>
+    <option value="3">DOES NOT AGREE NOR DISAGREE</option>
+    <option value="2">DISAGREE</option>
+    <option value="1">STRONGLY DISAGREE</option>
+    </select>
+    <br /><br /><br />
+
+    <label>🎉Prefer parties over staying in?</label>
+
+    <select id="Q3">
+    <option value="5">STRONGLY AGREE</option>
+    <option value="4">AGREE</option>
+    <option value="3">DOES NOT AGREE NOR DISAGREE</option>
+    <option value="2">DISAGREE</option>
+    <option value="1">STRONGLY DISAGREE</option>
+    </select>
+    <br /><br /><br />
+
+    <label>👫Extroverted?</label>
+
+    <select id="Q4">
+    <option value="5">STRONGLY AGREE</option>
+    <option value="4">AGREE</option>
+    <option value="3">DOES NOT AGREE NOR DISAGREE</option>
+    <option value="2">DISAGREE</option>
+    <option value="1">STRONGLY DISAGREE</option>
+    </select>
+    <br /><br /><br />
+
+    <label>🛫Traveling is boring?</label>
+
+    <select id="Q5">
+    <option value="5">STRONGLY AGREE</option>
+    <option value="4">AGREE</option>
+    <option value="3">DOES NOT AGREE NOR DISAGREE</option>
+    <option value="2">DISAGREE</option>
+    <option value="1">STRONGLY DISAGREE</option>
+    </select>
+    <br /><br /><br />
+
+   
+
+
+<br /><br /><br />
+<button onclick="CalculateCompatibility()">Calculate Compatibility</button>
+<p id="Compatibility"><p>
+
+<script>
+console.log("Starting Matchmaker...");
+
+const DESIRED_RESPONSE = [
+    5, /* strongly agree */
+    5, /* strongly agree */
+    1, /* strongly disagree */
+    5, /* strongly agree */
+    1, /* strongly disagree */
+]
+
+const MAX_SCORE = 25;
+
+function CalculateCompatibility() {
+    console.log("CalculateCompatibility()");
+
+    let question1Response = document.getElementById('Q1').selectedOptions[0].value;
+    let question2Response = document.getElementById('Q2').selectedOptions[0].value;
+    let question3Response = document.getElementById('Q3').selectedOptions[0].value;
+    let question4Response = document.getElementById('Q4').selectedOptions[0].value;
+    let question5Response = document.getElementById('Q5').selectedOptions[0].value;
+
+    let question1Compatibility = 5 - Math.abs(question1Response - DESIRED_RESPONSE[0]);
+    let question2Compatibility = 5 - Math.abs(question1Response - DESIRED_RESPONSE[1]);
+    let question3Compatibility = 5 - Math.abs(question1Response - DESIRED_RESPONSE[2]);
+    let question4Compatibility = 5 - Math.abs(question1Response - DESIRED_RESPONSE[3]);
+    let question5Compatibility = 5 - Math.abs(question1Response - DESIRED_RESPONSE[4]);
+
+    console.log(question1Compatibility);
+    console.log(question2Compatibility);
+    console.log(question3Compatibility);
+    console.log(question4Compatibility);
+    console.log(question4Compatibility);
+    console.log(question5Compatibility);
+
+    let totalCompatibility = question1Compatibility + question2Compatibility + question3Compatibility + question4Compatibility +question5Compatibility;
+
+
+    totalCompatibility *= 100 / MAX_SCORE;
+    totalCompatibility = Math.round(totalCompatibility);
+    console.log("tc="+totalCompatibility);
+
+     document.getElementById("Compatibility").innerHTML = "Your compatibility is: "; + totalCompatibility;
+
+}
+
+</script>
 </body>
 </html>
+
