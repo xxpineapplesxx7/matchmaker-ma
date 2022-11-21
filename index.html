@@ -16,23 +16,50 @@
 </head>
 
 <body>
-    <h1>~ 🤍 Top Tier Matchmaker 🤍 ~</h1>
-    <p>🤍 Read 5 very important questions 
-        to determine your compatability with me 
-        <br /><br /><br />
-        🤍 Rank them regarding how much you agree or disagree
-        <br /><br /><br />
-        🤍 Good Luck, our future depends on you!</p>
-
+    <h1>~ 💗 Top Tier Matchmaker 💗 ~</h1>
+    <p> 
+       <b> INSTRUCTIONS </b>
+    <br />
+        🤍 Read 5 important questions 
+        to determine your compatability with me 🤍 
+        <br /><br />
+        🤍 Rank them regarding how much you agree or disagree 🤍
+        <br /><br />
+        🤍 Good Luck, our future depends on you! 🤍</p>
+        <br /><br />
 <style>
     body {
         margin:20px;
         text-align: center;
         background-color: lavenderblush;
-
+        font-family: fantasy;
     }
-</style>
-    <label>🎮 Video games together?</label>
+    
+    p {
+        border-style: ridge;
+        border-color:mediumpurple;
+        border-radius: 10px;
+        border-width: 2px;
+    }
+    
+    h1 {
+    text-align: center;
+    width: 650px;
+    margin:auto;
+    border-style: ridge;
+    background-color: floralwhite;
+    border-radius: 10px;
+    border-width: 2px;
+
+
+}
+
+
+
+    
+    </style>
+   
+    <b><label>🎮 Video games together?</label></b>
 
     <select id="Q1">
     <option value="5">STRONGLY AGREE</option>
@@ -43,7 +70,7 @@
     </select>
     <br /><br /><br />
 
-    <label>🌞Summer is the best season?</label>
+   <b><label>🌞Summer is the best season?</label></b>
 
     <select id="Q2">
     <option value="5">STRONGLY AGREE</option>
@@ -54,7 +81,7 @@
     </select>
     <br /><br /><br />
 
-    <label>🎉Prefer parties over staying in?</label>
+    <b><label>🎉Prefer parties over staying in?</label></b>
 
     <select id="Q3">
     <option value="5">STRONGLY AGREE</option>
@@ -65,7 +92,7 @@
     </select>
     <br /><br /><br />
 
-    <label>👫Extroverted?</label>
+    <b><label>👫Extroverted?</label></b>
 
     <select id="Q4">
     <option value="5">STRONGLY AGREE</option>
@@ -76,7 +103,7 @@
     </select>
     <br /><br /><br />
 
-    <label>🛫Traveling is boring?</label>
+   <b><label>🛫Traveling is boring?</label></b>
 
     <select id="Q5">
     <option value="5">STRONGLY AGREE</option>
@@ -85,18 +112,20 @@
     <option value="2">DISAGREE</option>
     <option value="1">STRONGLY DISAGREE</option>
     </select>
-    <br /><br /><br />
+    <br />
 
    
 
 
 <br /><br /><br />
 <button onclick="CalculateCompatibility()">Calculate Compatibility</button>
+
 <p id="Compatibility"><p>
 
 <p id="Message"></p>
 
 <script>
+    document.body.style.backgroundImage = "url('heart4.webp')";
     console.log("Starting Matchmaker...");
 
 function CalculateCompatibility() {
@@ -136,25 +165,28 @@ function CalculateCompatibility() {
     totalCompatibility *= 100 / MAX_SCORE;
     totalCompatibility = Math.round(totalCompatibility);
     console.log("totalCompatability=" + totalCompatibility);
+   
 
     document.getElementById("Compatibility").innerHTML = "Your compatibility is: " + totalCompatibility + "%";
+
   
     if (totalCompatibility > 80) {
         console.log("Congrats, when's our first date?\n")
-        document.getElementById("Message").innerHTML = "Congrats, when's our first date?";
+        document.getElementById("Message").innerHTML = "👩‍❤️‍👨 Congrats, when's our first date?";
     }
     else if (totalCompatibility > 79) {
         console.log("Congrats we are going to be best friends!\n")
-        document.getElementById("Message").innerHTML = "Congrats we are going to be best friends!";
+        document.getElementById("Message").innerHTML = "💃🏽🕺🏼 Congrats we are going to be best friends!";
     }
     else if (totalCompatibility > 59) {
         console.log("Congrats you are currently friend zoned!\n")
-        document.getElementById("Message").innerHTML = "Congrats you are currently friend zoned!";
+        document.getElementById("Message").innerHTML = "🧍🏽‍♀️🧍🏽Congrats you are currently friend zoned!";
     }
     else if (totalCompatibility > 39) {
         console.log("Congrats you are getting blocked!\n")
-        document.getElementById("Message").innerHTML = "Congrats you are getting blocked!";
+        document.getElementById("Message").innerHTML = "🏃🏽‍♀️Congrats you are getting blocked!";
     }
+    document.body.style.backgroundImage = "url('heart4.webp')";
 }
 
 </script>
