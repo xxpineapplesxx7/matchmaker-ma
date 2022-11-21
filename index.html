@@ -24,6 +24,14 @@
         <br /><br /><br />
         🤍 Good Luck, our future depends on you!</p>
 
+<style>
+    body {
+        margin:20px;
+        text-align: center;
+        background-color: lavenderblush;
+
+    }
+</style>
     <label>🎮 Video games together?</label>
 
     <select id="Q1">
@@ -86,10 +94,15 @@
 <button onclick="CalculateCompatibility()">Calculate Compatibility</button>
 <p id="Compatibility"><p>
 
-<script>
-console.log("Starting Matchmaker...");
+<p id="Message"></p>
 
-const DESIRED_RESPONSE = [
+<script>
+    console.log("Starting Matchmaker...");
+
+function CalculateCompatibility() {
+    console.log("CalculateCompatibility()");
+
+    const DESIRED_RESPONSE = [
     5, /* strongly agree */
     5, /* strongly agree */
     1, /* strongly disagree */
@@ -97,10 +110,7 @@ const DESIRED_RESPONSE = [
     1, /* strongly disagree */
 ]
 
-const MAX_SCORE = 25;
-
-function CalculateCompatibility() {
-    console.log("CalculateCompatibility()");
+    const MAX_SCORE = 25;
 
     let question1Response = document.getElementById('Q1').selectedOptions[0].value;
     let question2Response = document.getElementById('Q2').selectedOptions[0].value;
@@ -109,27 +119,42 @@ function CalculateCompatibility() {
     let question5Response = document.getElementById('Q5').selectedOptions[0].value;
 
     let question1Compatibility = 5 - Math.abs(question1Response - DESIRED_RESPONSE[0]);
-    let question2Compatibility = 5 - Math.abs(question1Response - DESIRED_RESPONSE[1]);
-    let question3Compatibility = 5 - Math.abs(question1Response - DESIRED_RESPONSE[2]);
-    let question4Compatibility = 5 - Math.abs(question1Response - DESIRED_RESPONSE[3]);
-    let question5Compatibility = 5 - Math.abs(question1Response - DESIRED_RESPONSE[4]);
+    let question2Compatibility = 5 - Math.abs(question2Response - DESIRED_RESPONSE[1]);
+    let question3Compatibility = 5 - Math.abs(question3Response - DESIRED_RESPONSE[2]);
+    let question4Compatibility = 5 - Math.abs(question4Response - DESIRED_RESPONSE[3]);
+    let question5Compatibility = 5 - Math.abs(question5Response - DESIRED_RESPONSE[4]);
 
-    console.log(question1Compatibility);
-    console.log(question2Compatibility);
-    console.log(question3Compatibility);
-    console.log(question4Compatibility);
-    console.log(question4Compatibility);
-    console.log(question5Compatibility);
+    console.log("c1=" +question1Compatibility);
+    console.log("c2=" +question2Compatibility);
+    console.log("c3=" +question3Compatibility);
+    console.log("c4=" +question4Compatibility);
+    console.log("c5=" +question5Compatibility);
 
-    let totalCompatibility = question1Compatibility + question2Compatibility + question3Compatibility + question4Compatibility +question5Compatibility;
+    let totalCompatibility = question1Compatibility + question2Compatibility + question3Compatibility + question4Compatibility + question5Compatibility;
 
 
     totalCompatibility *= 100 / MAX_SCORE;
     totalCompatibility = Math.round(totalCompatibility);
-    console.log("tc="+totalCompatibility);
+    console.log("totalCompatability=" + totalCompatibility);
 
-     document.getElementById("Compatibility").innerHTML = "Your compatibility is: "; + totalCompatibility;
-
+    document.getElementById("Compatibility").innerHTML = "Your compatibility is: " + totalCompatibility + "%";
+  
+    if (totalCompatibility > 80) {
+        console.log("Congrats, when's our first date?\n")
+        document.getElementById("Message").innerHTML = "Congrats, when's our first date?";
+    }
+    else if (totalCompatibility > 79) {
+        console.log("Congrats we are going to be best friends!\n")
+        document.getElementById("Message").innerHTML = "Congrats we are going to be best friends!";
+    }
+    else if (totalCompatibility > 59) {
+        console.log("Congrats you are currently friend zoned!\n")
+        document.getElementById("Message").innerHTML = "Congrats you are currently friend zoned!";
+    }
+    else if (totalCompatibility > 39) {
+        console.log("Congrats you are getting blocked!\n")
+        document.getElementById("Message").innerHTML = "Congrats you are getting blocked!";
+    }
 }
 
 </script>
